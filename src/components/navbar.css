@@ -1,0 +1,46 @@
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically center items */
+    background-color: #3B3355;
+    padding: 10px 20px;
+  }
+  
+  .navbar h2 {
+    color: white;
+    margin: 0; /* Remove default margin */
+  }
+  
+  /* Navbar links container */
+  .nav-links {
+    display: flex;
+    gap: 15px; /* Space between buttons */
+  }
+  
+  /* Button styles for nav links */
+  .nav-links a {
+    text-decoration: none;
+    color: white; /* Text color */
+    background-color: #5D5D81; /* Slightly lighter than navbar background */
+    padding: 10px 20px; /* Padding for button size */
+    border-radius: 5px; /* Rounded corners */
+    font-weight: 500; /* Medium font weight */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    border: 2px solid transparent; /* Add border for button-like appearance */
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+  
+  /* Hover effect */
+  .nav-links a:hover {
+    background-color: #7A7A9E; /* Lighter shade on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    border-color: #9A9ABF; /* Add border color on hover */
+  }
+  
+  /* Active link style (optional) */
+  .nav-links a.active {
+    background-color: #9A9ABF; /* Different color for active link */
+    border-color: #BDBDE3; /* Add border color for active link */
+  }
