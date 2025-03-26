@@ -67,11 +67,13 @@ function NumberBasedReport() {
   const getChartData = () => {
     if (data.length === 0) return { labels: [], datasets: [] };
 
-    const labels = data.map((item) => item[headers[0]]); // Use the first column as labels
+    // Use the first column as labels
+    const labels = data.map((item) => item[headers[0]]);
+    // Use the remaining columns as separate datasets
     const datasets = headers.slice(1).map((header, index) => ({
       label: header,
       data: data.map((item) => item[header]),
-      backgroundColor: `hsla(${(index * 360) / headers.length}, 70%, 50%, 0.5)`, // Dynamic colors
+      backgroundColor: `hsla(${(index * 360) / headers.length}, 70%, 50%, 0.5)`,
       borderColor: `hsla(${(index * 360) / headers.length}, 70%, 40%, 1)`,
       borderWidth: 1,
     }));
@@ -107,12 +109,124 @@ function NumberBasedReport() {
     }
   };
 
+  // Function to generate HTML string and trigger download of HTML report
+  const handleDownloadReport = () => {
+    // Generate table HTML string from current headers and data
+    const tableHTML = `
+      <table>
+        <thead>
+          <tr>
+            ${headers.map((header) => `<th>${header}</th>`).join("")}
+          </tr>
+        </thead>
+        <tbody>
+          ${data
+            .map(
+              (row) =>
+                `<tr>${headers
+                  .map((header) => `<td>${row[header]}</td>`)
+                  .join("")}</tr>`
+            )
+            .join("")}
+        </tbody>
+      </table>
+    `;
+
+    // Get chart data to pass into the HTML
+    const chartData = getChartData();
+
+    // Build the HTML content
+    const htmlContent = `
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <title>Number Based Report</title>
+          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+          <style>
+            body {
+              font-family: 'Poppins', sans-serif;
+              text-align: center;
+              margin: 20px;
+            }
+            .chart-container {
+              width: 80%;
+              margin: 20px auto;
+              max-height: 800vh;
+              display: flex;
+              justify-content: center;
+            }
+            .table-container {
+              max-width: 1300px;
+              margin: 20px auto;
+              overflow-x: auto;
+            }
+            table {
+              width: 80%;
+              margin: 20px auto;
+              border-collapse: collapse;
+            }
+            th, td {
+              border: 1px solid #5D5D81;
+              padding: 10px;
+              text-align: left;
+            }
+            th {
+              background-color: #5D5D81;
+              color: white;
+              font-weight: 500;
+            }
+            tr:nth-child(even) {
+              background-color: #F4F4F9;
+            }
+            tr:hover {
+              background-color: #E0E0E7;
+            }
+          </style>
+        </head>
+        <body>
+          <h2>Number Based Report</h2>
+          <div class="chart-container">
+            <canvas id="reportChart"></canvas>
+          </div>
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          <script>
+            (function() {
+              const chartData = ${JSON.stringify(chartData)};
+              const chartOptions = {
+                scales: { y: { beginAtZero: true } },
+                plugins: { legend: { display: true, position: "top" } }
+              };
+              const ctx = document.getElementById('reportChart').getContext('2d');
+              new Chart(ctx, {
+                type: "${chartType.toLowerCase()}",
+                data: chartData,
+                options: chartOptions
+              });
+            })();
+          </script>
+          <div class="table-container">
+            ${tableHTML}
+          </div>
+        </body>
+      </html>
+    `;
+
+    // Create a blob and trigger download
+    const blob = new Blob([htmlContent], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "number_report.html";
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="container">
       <h2>Number Based Report</h2>
 
+      {/* Chart type selector and chart */}
       <div className="chart-plus-selector">
-        {/* Dropdown to select chart type */}
         {data.length > 0 && (
           <div className="chart-selector">
             <label htmlFor="chart-type">Chart Type </label>
@@ -127,14 +241,12 @@ function NumberBasedReport() {
             </select>
           </div>
         )}
-
-        {/* Display chart if data exists */}
         {data.length > 0 && (
           <div className="chart-container">{renderChart()}</div>
         )}
       </div>
 
-      {/* Display table if data exists */}
+      {/* Data table */}
       {data.length > 0 && (
         <div className="table-container">
           <table>
@@ -158,9 +270,8 @@ function NumberBasedReport() {
         </div>
       )}
 
-      {/* Upload section */}
+      {/* Upload Section */}
       <div className="upload-section">
-        {/* Left side: File input and file name */}
         <div className="file-input-container">
           <label htmlFor="file-upload">
             <FaUpload /> Choose File
@@ -173,11 +284,17 @@ function NumberBasedReport() {
           />
           <span className="file-name">{fileName}</span>
         </div>
-
-        {/* Right side: Create Report button */}
         <button className="create-report-button" onClick={handleCreateReport}>
           Create Report
         </button>
+        {data.length > 0 && (
+          <button
+            onClick={handleDownloadReport}
+            className="create-report-button"
+          >
+            Download HTML Report
+          </button>
+        )}
       </div>
     </div>
   );

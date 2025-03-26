@@ -13,6 +13,9 @@ function Navbar() {
         <Link to="/data-based-report" className="nav-button">
           Data Based Report
         </Link>
+        <Link to="/issue-analysis" className="nav-button">
+          Issue Analysis
+        </Link>
         <Link to="/ai-report" className="nav-button">
           AI Report
         </Link>

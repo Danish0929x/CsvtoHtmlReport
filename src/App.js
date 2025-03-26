@@ -5,6 +5,7 @@ import DataBasedReport from "./components/DataBasedReport";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import AIReport from "./components/AIReport";
+import IssueAnalysis from "./components/IssueAnalysis";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/number-based-report" element={<NumberBasedReport />} />
           <Route path="/data-based-report" element={<DataBasedReport />} />
+          <Route path="/issue-analysis" element={<IssueAnalysis />} />
           <Route path="/ai-report" element={<AIReport />} />
         </Routes>
       </div>

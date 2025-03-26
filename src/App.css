@@ -1,283 +1,266 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-
+/* Base Styles */
 .App {
   text-align: center;
   font-family: 'Poppins', sans-serif;
-
+  background-color: #F4F4F9;
+  min-height: 100vh;
 }
 
-.input-container {
-  margin: 20px 0;
+.container {
+  padding: 20px 20px 100px;
+  max-width: 1300px;
+  margin: auto;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 20px;
 }
 
-nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-nav ul li {
-  display: inline;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #007bff;
-  font-weight: bold;
-}
-
-.chart-selector {
-  margin: 20px 0;
-}
-
-.chart-container {
-  width: 80%;
-  margin: 20px auto;
-}
-
-table {
-  width: 80%;
-  margin: 20px auto;
-  border-collapse: collapse;
-}
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-
-th {
-  background-color: #f4f4f4;
-  font-weight: bold;
-}
-
-tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-tr:hover {
-  background-color: #f1f1f1;
-}
-
-/* Upload section container */
-.upload-section {
-  display: flex;
-  gap: 10px; /* Space between input and button */
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #3B3355; /* Match navbar background */
-  position: fixed; /* Fixed position at the bottom */
-  bottom: 0; /* Stick to the bottom */
-  left: 0; /* Align to the left */
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-/* File input container */
-.file-input-container {
-  width: 80%; /* 80% width */
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Space between input and file name */
-}
-
-/* File input */
-.file-input-container input[type="file"] {
-  display: none; /* Hide the default file input */
-}
-
-/* Custom file input button */
-.file-input-container label {
-  background-color: #5D5D81; /* Button background color */
-  color: white; /* Text color */
-  padding: 10px 20px; /* Padding for button size */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: all 0.3s ease; /* Smooth transition for hover effects */
-}
-
-.file-input-container label:hover {
-  background-color: #7A7A9E; /* Lighter shade on hover */
-}
-
-/* File name display */
-.file-name {
-  color: white; /* Text color */
-  font-size: 14px; /* Font size */
-  margin-left: 10px; /* Space from the button */
-}
-
-/* Create Report button */
-.create-report-button {
-  text-decoration: none;
-    color: white; /* Text color */
-    background-color: #5D5D81; /* Slightly lighter than navbar background */
-    padding: 10px 20px; /* Padding for button size */
-    border-radius: 5px; /* Rounded corners */
-    font-weight: 500; /* Medium font weight */
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
-    border: 2px solid transparent; /* Add border for button-like appearance */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    font-size: 1rem;
-}
-
-.create-report-button:hover {
-  background-color: #7A7A9E; /* Lighter shade on hover */
-  transform: translateY(-2px); /* Slight lift effect */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  border-color: #9A9ABF; /* Add border color on hover */}
-
-
-.chart-plus-selector{
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 40px;
-  margin-top: 40px;
-}
-
-
-
-
-
-
-
-
-  .container{
-    padding: 20px 20px 100px;
-    max-width: 1300px;
-    margin: auto;
-  }
-
-  .chart-selector{
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    text-align: left;
-  }
-
-
-  .chart-container {
-    display: flex;
-    justify-content: center;
-    max-height: 400px;
-    margin: 20px auto;
-    width: 80%;
-  }
-  
-  .table-container {
-    max-width: 1300px;
-    margin: 20px auto;
-    overflow-x: auto;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    border: 1px solid #5D5D81;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #5D5D81;
-    color: white;
-    font-weight: 500;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #F4F4F9;
-  }
-  
-  tr:hover {
-    background-color: #E0E0E7;
-  }
-  
-  .chart-selector {
-    margin: 20px 0;
-    display: flex;
-    gap: 10px;
-  }
-  
-  .chart-selector label {
-    font-weight: 500;
-    color: #3B3355;
-    text-align: left;
-  }
-  
-  .chart-selector select {
-    padding: 8px 12px;
-    border: 2px solid #5D5D81;
-    border-radius: 5px;
-    background-color: white;
-    color: #3B3355;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .chart-selector select:hover {
-    border-color: #7A7A9E;
-  }
-  
-.coming-soon {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #333;
-  border: 4px solid transparent;
-  border-radius: 10px;
-  position: relative;
-  animation: borderAnimation 2s infinite;
-}
-
-@keyframes borderAnimation {
-  0% {
-    border-color: transparent;
-  }
-  25% {
-    border-color: #ff0000;
-  }
-  50% {
-    border-color: #00ff00;
-  }
-  75% {
-    border-color: #0000ff;
-  }
-  100% {
-    border-color: transparent;
-  }
-}
-
-.filter-display{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+h2, h3 {
+  color: #3B3355;
   margin-bottom: 20px;
 }
 
-.filter-display p{
-  font-size: 1.2rem;
+/* Upload Section */
+.upload-section {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  padding: 15px 20px;
+  background-color: #3B3355;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.file-input-container {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-input-container input[type="file"] {
+  display: none;
+}
+
+.file-input-container label {
+  background-color: #5D5D81;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.file-input-container label:hover {
+  background-color: #7A7A9E;
+}
+
+.file-name {
+  color: white;
+  font-size: 14px;
+  margin-left: 10px;
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.create-report-button {
+  color: white;
+  background-color: #5D5D81;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.create-report-button:hover {
+  background-color: #7A7A9E;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Chart Configuration */
+.chart-configuration {
+  background-color: #F4F4F9;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.chart-controls {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.chart-controls > div {
+  flex: 1;
+  min-width: 200px;
+}
+
+.chart-controls label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #3B3355;
+  text-align: left;
+}
+
+.chart-controls select {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid #5D5D81;
+  border-radius: 5px;
+  background-color: white;
+  color: #3B3355;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.chart-controls select:hover {
+  border-color: #7A7A9E;
+}
+
+/* Chart Container */
+.chart-container-wrapper {
+  margin: 30px 0;
+}
+
+.chart-container {
+  height: 400px;
+  width: 100%;
+  margin: 20px auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Filter Controls */
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #F4F4F9;
+  border-radius: 8px;
+}
+
+.filter-controls label {
   font-weight: 500;
   color: #3B3355;
 }
 
-.filter-display button{
-  padding: 10px 20px;
+.filter-controls select {
+  padding: 8px 12px;
+  border: 2px solid #5D5D81;
+  border-radius: 5px;
+  background-color: white;
+  color: #3B3355;
+  font-size: 14px;
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.filter-controls button {
+  padding: 8px 15px;
   background-color: #5D5D81;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.filter-controls button:hover {
+  background-color: #7A7A9E;
+}
+
+/* Table Styles */
+.table-container {
+  width: 100%;
+  margin: 30px auto;
+  overflow-x: auto;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #E0E0E7;
+}
+
+th {
+  background-color: #5D5D81;
+  color: white;
+  font-weight: 500;
+  position: sticky;
+  top: 0;
+}
+
+tr:nth-child(even) {
+  background-color: #F4F4F9;
+}
+
+tr:hover {
+  background-color: #E0E0E7;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .upload-section {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .file-input-container {
+    width: 100%;
+  }
+  
+  .chart-controls {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .filter-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .container {
+    padding: 15px 15px 120px;
+  }
+}
+
+/* Animation for loading states */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.chart-container, .table-container {
+  animation: fadeIn 0.5s ease-out;
 }
